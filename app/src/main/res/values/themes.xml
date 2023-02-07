@@ -18,6 +18,24 @@
 
 <!--    TextView-->
 
+    <style name="textNameCurrency" parent="TextAppearance.AppCompat" >
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="textRate" parent="TextAppearance.AppCompat" >
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="textDifference" parent="TextAppearance.AppCompat" >
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+        <item name="android:textColor">@color/mainGreen</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
 <!--    -->
 
 <!--    ImageButton-->
@@ -27,5 +45,19 @@
         <item name="android:tint">@color/black</item>
     </style>
 
+<!--    -->
+
+
+<!--    materialButton-->
+    <style name="editListMaterialButton" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">25dp</item>
+        <item name="android:backgroundTint">@color/mainBlue</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginStart">84dp</item>
+        <item name="android:layout_marginEnd">84dp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
 <!--    -->
 </resources>
