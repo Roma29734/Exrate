@@ -3,6 +3,8 @@ package com.example.exrate.di.module
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.exrate.di.ViewModelFactory
+import com.example.exrate.ui.MainViewModel
+import com.example.exrate.ui.screen.addCurrency.AddCurrencyViewModel
 import com.example.exrate.ui.screen.home.HomeViewModel
 import dagger.Binds
 import dagger.MapKey
@@ -17,8 +19,18 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
+    @ViewModelKey(MainViewModel::class)
+    abstract fun bindMainViewModel(imagesListViewModel: MainViewModel): ViewModel
+
+    @Binds
+    @IntoMap
     @ViewModelKey(HomeViewModel::class)
     abstract fun bindHomeViewModel(imagesListViewModel: HomeViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AddCurrencyViewModel::class)
+    abstract fun bindAddCurrencyViewModel(imagesListViewModel: AddCurrencyViewModel): ViewModel
 }
 
 @MustBeDocumented

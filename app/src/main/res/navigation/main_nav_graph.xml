@@ -9,5 +9,14 @@
         android:id="@+id/homeFragment"
         android:name="com.example.exrate.ui.screen.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_addCurrencyFragment"
+            app:destination="@id/addCurrencyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCurrencyFragment"
+        android:name="com.example.exrate.ui.screen.addCurrency.AddCurrencyFragment"
+        android:label="fragment_add_currency"
+        tools:layout="@layout/fragment_add_currency" />
 </navigation>

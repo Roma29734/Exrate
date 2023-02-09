@@ -1,5 +1,6 @@
 package com.example.exrate.di.module
 
+import com.example.exrate.data.local.LocalDao
 import com.example.exrate.data.remote.RetrofitInstance
 import com.example.exrate.data.repository.ExrateRepository
 import com.example.exrate.data.repository.ExrateRepositoryImpl
@@ -15,8 +16,9 @@ class RemoteModule {
     @Provides
     fun provideWallpaperRepositoryImpl(
         instance: RetrofitInstance,
+        dao: LocalDao
     ): ExrateRepositoryImpl =
-        ExrateRepositoryImpl(instance)
+        ExrateRepositoryImpl(instance, dao)
 
     @Provides
     fun provideRetrofitInstance(): RetrofitInstance = RetrofitInstance
