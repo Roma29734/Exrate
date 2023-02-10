@@ -5,9 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import com.example.exrate.R
 import com.example.exrate.base.BaseFragment
-import com.example.exrate.data.model.latest.Response
 import com.example.exrate.databinding.FragmentHomeBinding
 import com.example.exrate.ui.adapter.MainAdapter
 import com.example.exrate.ui.view.BottomSheetDialogDetailCurrency
@@ -26,10 +24,16 @@ class HomeFragment :
                 BottomSheetDialogDetailCurrency(info = it, viewModelFactory = viewModelFactory)
             bottomSheet.show(childFragmentManager, "aboba")
         }
-        binding.mainRecyclerView.adapter = adapter
-        binding.matButtonEditList.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToAddCurrencyFragment()
-            mainNavController.navigate(action)
+        binding.apply {
+            mainRecyclerView.adapter = adapter
+            matButtonEditList.setOnClickListener {
+                val action = HomeFragmentDirections.actionHomeFragmentToAddCurrencyFragment()
+                mainNavController.navigate(action)
+            }
+            upBar.imgButtonSearch.setOnClickListener {
+                val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
+                mainNavController.navigate(action)
+            }
         }
 
         viewModel.getLatest()

@@ -48,5 +48,4 @@ class AddCurrencyFragment :
             adapter.setData(it)
         }
     }
-
 }

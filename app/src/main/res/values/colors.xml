@@ -13,5 +13,6 @@
     <color name="mainBlue">#2A61FF</color>
     <color name="mainDarkBlue">#131722</color>
     <color name="mainGrey">#1E1E1E</color>
+    <color name="secondGrey">#656565</color>
     <color name="mainGreen">#2D8571</color>
 </resources>

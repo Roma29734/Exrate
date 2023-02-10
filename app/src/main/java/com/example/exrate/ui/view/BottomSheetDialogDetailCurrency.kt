@@ -36,9 +36,9 @@ class BottomSheetDialogDetailCurrency constructor(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel.getProfileCurrency(info.s)
-        viewModel.profileCurrencyResult.observe(viewLifecycleOwner) {
+        val nameResearch = "${info.s[4]}${info.s[5]}${info.s[6]}"
+        viewModel.getProfileCurrency(nameResearch)
+        viewModel.profileCurrencyResultByName.observe(viewLifecycleOwner) {
             when (it) {
                 is BottomStateResult.Loading -> {
                     binding.progressBar.isVisible = true
@@ -72,14 +72,14 @@ class BottomSheetDialogDetailCurrency constructor(
                                 })
                             }
                             textNameCurrency.text = info.s
-                            textName.text = result.name
-                            textCountry.text = result.country
                             textCurrencyRateC.text = info.c
-                            textCP.text = info.cp
                             textCH.text = info.ch
+                            textCP.text = info.cp
                             textOpenEdit.text = info.o
                             textRateEdit.text = "${info.l}-${info.h}"
                             textLastUpdateTime.text = info.tm
+                            textName.text = result.name
+                            textCountry.text = result.country
                         }
                     }
                 }

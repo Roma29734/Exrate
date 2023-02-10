@@ -6,6 +6,7 @@ import com.example.exrate.di.ViewModelFactory
 import com.example.exrate.ui.MainViewModel
 import com.example.exrate.ui.screen.addCurrency.AddCurrencyViewModel
 import com.example.exrate.ui.screen.home.HomeViewModel
+import com.example.exrate.ui.screen.search.SearchViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -31,6 +32,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(AddCurrencyViewModel::class)
     abstract fun bindAddCurrencyViewModel(imagesListViewModel: AddCurrencyViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SearchViewModel::class)
+    abstract fun bindSearchViewModel(imagesListViewModel: SearchViewModel): ViewModel
 }
 
 @MustBeDocumented

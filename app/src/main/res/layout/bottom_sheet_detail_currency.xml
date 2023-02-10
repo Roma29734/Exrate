@@ -10,7 +10,7 @@
         android:layout_width="50dp"
         android:layout_height="4dp"
         android:layout_marginTop="8dp"
-        android:backgroundTint="@color/mainGrey"
+        android:backgroundTint="@color/secondGrey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -162,14 +162,13 @@
         android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/montserrat_medium"
-        android:textColor="@color/mainGrey"
+        android:textColor="@color/secondGrey"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textOpenEdit"
         tools:text="2020-08-04 21:15:03" />
-
 
     <ProgressBar
         android:id="@+id/progress_bar"

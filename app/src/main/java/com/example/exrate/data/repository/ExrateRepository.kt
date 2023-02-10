@@ -14,7 +14,9 @@ interface ExrateRepository {
 
     fun getListSupported(): Single<ListSupportedModel>
 
-    fun getProfileCurrency(symbol: String): Single<ProfileCurrencyModel>
+    fun getProfileCurrency(id: String): Single<ProfileCurrencyModel>
+
+    fun getProfileCurrencyByName(name: String): Single<ProfileCurrencyModel>
 
 //    Local
 

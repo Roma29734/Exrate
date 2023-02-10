@@ -26,7 +26,11 @@ class HomeViewModel @Inject constructor(
                         .subscribeBy(onSuccess = { saveCurrency ->
                             repository.getLatest(convertSaveCurrency(saveCurrency))
                                 .subscribeBy(onSuccess = { result ->
-                                    _homeState.postValue(StateResult.Success(result))
+                                    if(result.status) {
+                                        _homeState.postValue(StateResult.Success(result))
+                                    } else {
+                                        _homeState.postValue(StateResult.Error(result.msg))
+                                    }
                                 }, onError = {
                                     _homeState.postValue(StateResult.Error(it.message.toString()))
                                 })

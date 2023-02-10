@@ -27,8 +27,11 @@ class MainViewModel @Inject constructor(
 
     private val context = application
 
-    private val _profileCurrencyResult = MutableLiveData<BottomStateResult<Response>>()
+    private val _profileCurrencyResult = MutableLiveData< BottomStateResult<List<Response>>>()
     val profileCurrencyResult get() = _profileCurrencyResult
+
+    private val _profileCurrencyResultByName = MutableLiveData<BottomStateResult<Response>>()
+    val profileCurrencyResultByName get() = _profileCurrencyResultByName
 
     fun checkDate() {
         if (loadDate() == null) {
@@ -45,22 +48,22 @@ class MainViewModel @Inject constructor(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(onSuccess = { listSupported ->
-//                repository.deleteListSupported()
                 Single.just(listSupported)
                     .subscribeOn(Schedulers.io())
                     .subscribeBy { result ->
+                        repository.deleteListSupported()
                         result.response.map {
                             val model = ListSupportedEntity(
-                                id = 0,
+                                id = it.id.toInt(),
                                 decimal = it.decimal,
                                 name = it.name,
                                 symbol = it.symbol
                             )
                             repository.insertList(model)
                         }
+                        saveDate(listSupported.info.server_time)
                     }
 
-                saveDate(listSupported.info.server_time)
             }, onError = {
 
             })
@@ -99,20 +102,35 @@ class MainViewModel @Inject constructor(
         return "${stoke[0]}${stoke[1]}${stoke[2]}${stoke[3]}${stoke[4]}${stoke[5]}${stoke[6]}${stoke[7]}${stoke[8]}${stoke[9]}"
     }
 
-    fun getProfileCurrency(baseName: String) {
+    fun getProfileCurrency(id: String) {
         _profileCurrencyResult.postValue(BottomStateResult.Loading())
-        val nameResearch = "${baseName[4]}${baseName[5]}${baseName[6]}"
-        repository.getProfileCurrency(nameResearch)
+        repository.getProfileCurrency(id)
             .subscribeOn(Schedulers.io())
             .subscribeBy(onSuccess = {
                 if (it.status) {
-                    _profileCurrencyResult.postValue(BottomStateResult.Success(it.response[0]))
+                    _profileCurrencyResult.postValue(BottomStateResult.Success(it.response))
                 } else {
                     _profileCurrencyResult.postValue(BottomStateResult.Error(it.msg))
                 }
             }, onError = {
                 Log.d("mainViewModel", "${it.message}")
                 _profileCurrencyResult.postValue(BottomStateResult.Error(it.message.toString()))
+            })
+    }
+
+    fun getProfileCurrencyByName(name: String) {
+        _profileCurrencyResultByName.postValue(BottomStateResult.Loading())
+        repository.getProfileCurrencyByName(name)
+            .subscribeOn(Schedulers.io())
+            .subscribeBy(onSuccess = {
+                if (it.status) {
+                    _profileCurrencyResultByName.postValue(BottomStateResult.Success(it.response[0]))
+                } else {
+                    _profileCurrencyResultByName.postValue(BottomStateResult.Error(it.msg))
+                }
+            }, onError = {
+                Log.d("mainViewModel", "${it.message}")
+                _profileCurrencyResultByName.postValue(BottomStateResult.Error(it.message.toString()))
             })
     }
 }

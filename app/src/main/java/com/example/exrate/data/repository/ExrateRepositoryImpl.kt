@@ -28,8 +28,12 @@ class ExrateRepositoryImpl @Inject constructor(
         return apiService.getListSupported(type = "forex", access_key = API_KEY)
     }
 
-    override fun getProfileCurrency(symbol: String): Single<ProfileCurrencyModel> {
-        return apiService.getProfileCurrency(symbol = symbol, access_key = API_KEY)
+    override fun getProfileCurrency(id: String): Single<ProfileCurrencyModel> {
+        return apiService.getProfileCurrency(id = id, access_key = API_KEY)
+    }
+
+    override fun getProfileCurrencyByName(name: String): Single<ProfileCurrencyModel> {
+        return apiService.getProfileCurrencyByName(name, access_key = API_KEY)
     }
 
 //    Local

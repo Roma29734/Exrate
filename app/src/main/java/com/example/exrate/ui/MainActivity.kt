@@ -18,5 +18,4 @@ class MainActivity : DaggerAppCompatActivity() {
         setContentView(R.layout.activity_main)
         viewModel.checkDate()
     }
-
 }
