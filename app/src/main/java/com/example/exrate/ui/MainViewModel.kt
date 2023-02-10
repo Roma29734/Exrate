@@ -1,9 +1,14 @@
 package com.example.exrate.ui
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import com.example.exrate.data.model.entity.ListSupportedEntity
+import com.example.exrate.data.model.profileCurrency.ProfileCurrencyModel
+import com.example.exrate.data.model.profileCurrency.Response
 import com.example.exrate.data.repository.ExrateRepository
+import com.example.exrate.ui.view.BottomStateResult
 import dagger.android.support.DaggerAppCompatActivity
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Single
@@ -18,15 +23,18 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val repository: ExrateRepository,
     application: Application,
-): AndroidViewModel(application) {
+) : AndroidViewModel(application) {
 
     private val context = application
 
+    private val _profileCurrencyResult = MutableLiveData<BottomStateResult<Response>>()
+    val profileCurrencyResult get() = _profileCurrencyResult
+
     fun checkDate() {
-        if(loadDate() == null) {
+        if (loadDate() == null) {
             changeListSupported()
         } else {
-            if(getDate().toString() != loadDate()) {
+            if (getDate().toString() != loadDate()) {
                 changeListSupported()
             }
         }
@@ -36,7 +44,7 @@ class MainViewModel @Inject constructor(
         repository.getListSupported()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy (onSuccess = {  listSupported ->
+            .subscribeBy(onSuccess = { listSupported ->
 //                repository.deleteListSupported()
                 Single.just(listSupported)
                     .subscribeOn(Schedulers.io())
@@ -68,14 +76,16 @@ class MainViewModel @Inject constructor(
     }
 
     private fun loadDate(): String? {
-        val sheared = context.getSharedPreferences("dateLastLoadListSupported",
+        val sheared = context.getSharedPreferences(
+            "dateLastLoadListSupported",
             DaggerAppCompatActivity.MODE_PRIVATE
         )
         return sheared.getString("date", null)
     }
 
     private fun saveDate(state: String) {
-        val sheared = context.getSharedPreferences("dateLastLoadListSupported",
+        val sheared = context.getSharedPreferences(
+            "dateLastLoadListSupported",
             DaggerAppCompatActivity.MODE_PRIVATE
         )
 
@@ -87,5 +97,22 @@ class MainViewModel @Inject constructor(
     private fun convertStroke(stoke: String): String {
 
         return "${stoke[0]}${stoke[1]}${stoke[2]}${stoke[3]}${stoke[4]}${stoke[5]}${stoke[6]}${stoke[7]}${stoke[8]}${stoke[9]}"
+    }
+
+    fun getProfileCurrency(baseName: String) {
+        _profileCurrencyResult.postValue(BottomStateResult.Loading())
+        val nameResearch = "${baseName[4]}${baseName[5]}${baseName[6]}"
+        repository.getProfileCurrency(nameResearch)
+            .subscribeOn(Schedulers.io())
+            .subscribeBy(onSuccess = {
+                if (it.status) {
+                    _profileCurrencyResult.postValue(BottomStateResult.Success(it.response[0]))
+                } else {
+                    _profileCurrencyResult.postValue(BottomStateResult.Error(it.msg))
+                }
+            }, onError = {
+                Log.d("mainViewModel", "${it.message}")
+                _profileCurrencyResult.postValue(BottomStateResult.Error(it.message.toString()))
+            })
     }
 }

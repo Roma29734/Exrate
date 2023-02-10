@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.exrate.data.model.latest.LatestModel
+import com.example.exrate.data.model.latest.Response
 import com.example.exrate.databinding.CurrencyRowCardBinding
 
 class MainAdapter : RecyclerView.Adapter<MainAdapter.MyViewHolder>() {
@@ -12,6 +13,8 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.MyViewHolder>() {
         RecyclerView.ViewHolder(binding.root)
 
     private var latestModel: LatestModel? = null
+
+    var showBottomSheetDialog: ((city: Response) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
@@ -32,6 +35,9 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.MyViewHolder>() {
                 textRate.text = latestPosition.o
                 textDifferencePercent.text = latestPosition.cp
                 textDifference.text = latestPosition.ch
+                root.setOnClickListener {
+                    showBottomSheetDialog?.let { it1 -> it1(latestPosition) }
+                }
             }
         }
     }

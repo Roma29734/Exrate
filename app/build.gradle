@@ -100,6 +100,11 @@ dependencies {
     implementation "io.reactivex.rxjava3:rxjava:$rxJavaVersion"
     implementation "io.reactivex.rxjava3:rxandroid:$rxJavaAndroidVersion"
     implementation "io.reactivex.rxjava3:rxkotlin:$rxKotlinVersion"
+
+    //Coil
+    def coilVersion= "2.2.2"
+    implementation "io.coil-kt:coil:$coilVersion"
+    implementation "io.coil-kt:coil-svg:$coilVersion"
 }
 kapt {
     correctErrorTypes = true

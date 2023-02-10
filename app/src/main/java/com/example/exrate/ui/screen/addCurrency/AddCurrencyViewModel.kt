@@ -23,21 +23,21 @@ class AddCurrencyViewModel @Inject constructor(
         Single.just(model)
             .subscribeOn(Schedulers.io())
             .subscribeBy(onSuccess = {
-                val newModel = SaveCurrencyEntity(0, model.symbol)
+                val newModel = SaveCurrencyEntity(0, model.symbol, model.id.toString())
                 repository.insertSaveCurrency(newModel)
             }, onError = {
             })
     }
 
     fun searchDataBase(query: String) {
-        repository.readListSupported()
+        repository.searchListSupported(query)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(onSuccess = {
-                Log.d("abeba","$it")
+                Log.d("abeba", "$it")
                 _searchResult.postValue(it)
             }, onError = {
-                Log.d("abeba","${it.message}")
+                Log.d("abeba", "${it.message}")
             })
     }
 }

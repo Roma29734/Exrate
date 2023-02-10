@@ -11,6 +11,7 @@
     <color name="mainRed">#FC4E50</color>
     <color name="secondRed">#B95267</color>
     <color name="mainBlue">#2A61FF</color>
+    <color name="mainDarkBlue">#131722</color>
     <color name="mainGrey">#1E1E1E</color>
     <color name="mainGreen">#2D8571</color>
 </resources>

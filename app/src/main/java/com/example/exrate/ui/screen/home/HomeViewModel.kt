@@ -20,7 +20,6 @@ class HomeViewModel @Inject constructor(
         _homeState.postValue(StateResult.Loading())
         repository.getSizeSaveCurrency()
             .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy { size ->
                 if (size != 0) {
                     repository.readSaveCurrency()
@@ -42,7 +41,7 @@ class HomeViewModel @Inject constructor(
 
     private fun convertSaveCurrency(list: List<SaveCurrencyEntity>): String {
         var result = ""
-        list.map { result += if (it.name == list.last().name) it.name else "${it.name}," }
+        list.map { result += if (it.idPersonal == list.last().idPersonal) it.idPersonal else "${it.idPersonal}," }
         println(result)
         return result
     }

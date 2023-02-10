@@ -4,6 +4,7 @@ import com.example.exrate.data.model.entity.ListSupportedEntity
 import com.example.exrate.data.model.entity.SaveCurrencyEntity
 import com.example.exrate.data.model.latest.LatestModel
 import com.example.exrate.data.model.listSupported.ListSupportedModel
+import com.example.exrate.data.model.profileCurrency.ProfileCurrencyModel
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.Query
 
@@ -12,6 +13,8 @@ interface ExrateRepository {
     fun getLatest(symbol: String): Single<LatestModel>
 
     fun getListSupported(): Single<ListSupportedModel>
+
+    fun getProfileCurrency(symbol: String): Single<ProfileCurrencyModel>
 
 //    Local
 

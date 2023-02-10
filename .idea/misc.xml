@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/tehnicals/Exrate/app/src/main/res/drawable/bottom_sheet_background_border.xml" value="0.1655" />
+        <entry key="..\:/tehnicals/Exrate/app/src/main/res/drawable/bottom_sheet_background_border_light.xml" value="0.1655" />
         <entry key="..\:/tehnicals/Exrate/app/src/main/res/drawable/ic_search_white.xml" value="0.1655" />
         <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/activity_main.xml" value="0.33177083333333335" />
+        <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/bottom_sheet_detail_currency.xml" value="0.25" />
         <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/currency_add_row_card.xml" value="0.5" />
         <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/currency_row_card.xml" value="0.25" />
         <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/fragment_add_currency.xml" value="0.33177083333333335" />

@@ -5,6 +5,7 @@ import com.example.exrate.data.model.entity.ListSupportedEntity
 import com.example.exrate.data.model.entity.SaveCurrencyEntity
 import com.example.exrate.data.model.latest.LatestModel
 import com.example.exrate.data.model.listSupported.ListSupportedModel
+import com.example.exrate.data.model.profileCurrency.ProfileCurrencyModel
 import com.example.exrate.data.remote.RetrofitInstance
 import com.example.exrate.utils.API_KEY
 import io.reactivex.rxjava3.core.Observable
@@ -20,11 +21,15 @@ class ExrateRepositoryImpl @Inject constructor(
     private val apiService = instance.api
 
     override fun getLatest(symbol: String): Single<LatestModel> {
-        return apiService.getLatest(symbol = symbol, access_key = API_KEY)
+        return apiService.getLatest(id = symbol, access_key = API_KEY)
     }
 
     override fun getListSupported(): Single<ListSupportedModel> {
         return apiService.getListSupported(type = "forex", access_key = API_KEY)
+    }
+
+    override fun getProfileCurrency(symbol: String): Single<ProfileCurrencyModel> {
+        return apiService.getProfileCurrency(symbol = symbol, access_key = API_KEY)
     }
 
 //    Local
