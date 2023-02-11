@@ -1,19 +1,13 @@
 package com.example.exrate.ui.screen.search
 
-import android.os.Build.VERSION_CODES.P
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import com.example.exrate.R
 import com.example.exrate.base.BaseFragment
 import com.example.exrate.databinding.FragmentSearchBinding
 import com.example.exrate.ui.adapter.AddAdapter
-import com.example.exrate.ui.view.BottomSheetDialogDetailCurrency
 import com.example.exrate.ui.view.BottomSheetDialogSearchCurrency
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.kotlin.subscribeBy
@@ -44,12 +38,12 @@ class SearchFragment :
                     } else {
                         Toast.makeText(context, "Возникла ошибка ${it.msg}", Toast.LENGTH_SHORT)
                             .show()
-                        Log.d("SearchFragment", it.msg)
+                        Log.d("SearchResponce", it.msg)
                     }
                 }, onError = {
                     Toast.makeText(context, "Возникла ошибка ${it.message}", Toast.LENGTH_SHORT)
                         .show()
-                    Log.d("SearchFragment", it.message.toString())
+                    Log.d("SearchResponce", it.message.toString())
                 })
         }
         binding.apply {

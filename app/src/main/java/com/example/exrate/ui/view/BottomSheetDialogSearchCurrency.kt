@@ -37,7 +37,7 @@ class BottomSheetDialogSearchCurrency constructor(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getProfileCurrency(info.s)
+        viewModel.getProfileCurrency(info.id)
         viewModel.profileCurrencyResult.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is BottomStateResult.Loading -> {
@@ -45,7 +45,7 @@ class BottomSheetDialogSearchCurrency constructor(
                 }
                 is BottomStateResult.Error -> {
                     binding.progressBar.isVisible = false
-                    Toast.makeText(context, result.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "ошибка${result.message}", Toast.LENGTH_SHORT).show()
                 }
                 is BottomStateResult.Success -> {
                     binding.apply {

@@ -14,10 +14,12 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import io.reactivex.rxjava3.schedulers.Schedulers
+import kotlinx.coroutines.delay
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
@@ -103,19 +105,21 @@ class MainViewModel @Inject constructor(
     }
 
     fun getProfileCurrency(id: String) {
-        _profileCurrencyResult.postValue(BottomStateResult.Loading())
         repository.getProfileCurrency(id)
             .subscribeOn(Schedulers.io())
+            .delay(5000, TimeUnit.MILLISECONDS)
             .subscribeBy(onSuccess = {
                 if (it.status) {
                     _profileCurrencyResult.postValue(BottomStateResult.Success(it.response))
                 } else {
                     _profileCurrencyResult.postValue(BottomStateResult.Error(it.msg))
+                    Log.d("SearchResponce", it.msg)
                 }
             }, onError = {
-                Log.d("mainViewModel", "${it.message}")
+                Log.d("SearchResponce", "${it.message}")
                 _profileCurrencyResult.postValue(BottomStateResult.Error(it.message.toString()))
             })
+        _profileCurrencyResult.postValue(BottomStateResult.Loading())
     }
 
     fun getProfileCurrencyByName(name: String) {

@@ -37,7 +37,7 @@ class BottomSheetDialogDetailCurrency constructor(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val nameResearch = "${info.s[4]}${info.s[5]}${info.s[6]}"
-        viewModel.getProfileCurrency(nameResearch)
+        viewModel.getProfileCurrencyByName(nameResearch)
         viewModel.profileCurrencyResultByName.observe(viewLifecycleOwner) {
             when (it) {
                 is BottomStateResult.Loading -> {
@@ -60,6 +60,7 @@ class BottomSheetDialogDetailCurrency constructor(
                                         options
                                     )
                                 }
+
                                 listener(onStart = {
                                     Log.d("bottomSheetDialogDetailCurrency", "onStart")
                                 }, onSuccess = { _, _ ->
@@ -71,6 +72,7 @@ class BottomSheetDialogDetailCurrency constructor(
                                     )
                                 })
                             }
+
                             textNameCurrency.text = info.s
                             textCurrencyRateC.text = info.c
                             textCH.text = info.ch

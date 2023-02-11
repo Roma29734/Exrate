@@ -34,7 +34,7 @@ interface ApiService {
 
     @GET("profile?")
     fun getProfileCurrencyByName(
-        @Query("profile") profile: String,
+        @Query("symbol") symbol: String,
         @Query("access_key") access_key: String,
     ): Single<ProfileCurrencyModel>
 }
