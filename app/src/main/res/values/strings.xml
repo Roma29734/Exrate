@@ -6,4 +6,7 @@
     <string name="daily_range">Дневной диапазон</string>
     <string name="open">Открытие</string>
     <string name="Bet">Ставка</string>
+    <string name="next">Продолжить</string>
+    <string name="start_text_main">Exrate - актуальные курсы валют без смс и регистрации</string>
+    <string name="start_text_warning">Данное приложение является тестовым, из-за ограничений api возможны задержки при работе приложения.</string>
 </resources>

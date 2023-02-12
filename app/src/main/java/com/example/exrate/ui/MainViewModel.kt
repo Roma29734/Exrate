@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.exrate.data.model.entity.ListSupportedEntity
-import com.example.exrate.data.model.profileCurrency.ProfileCurrencyModel
 import com.example.exrate.data.model.profileCurrency.Response
 import com.example.exrate.data.repository.ExrateRepository
 import com.example.exrate.ui.view.BottomStateResult
@@ -14,7 +13,6 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import io.reactivex.rxjava3.schedulers.Schedulers
-import kotlinx.coroutines.delay
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -29,7 +27,7 @@ class MainViewModel @Inject constructor(
 
     private val context = application
 
-    private val _profileCurrencyResult = MutableLiveData< BottomStateResult<List<Response>>>()
+    private val _profileCurrencyResult = MutableLiveData<BottomStateResult<List<Response>>>()
     val profileCurrencyResult get() = _profileCurrencyResult
 
     private val _profileCurrencyResultByName = MutableLiveData<BottomStateResult<Response>>()
@@ -96,6 +94,16 @@ class MainViewModel @Inject constructor(
 
         sheared.edit().apply {
             putString("date", convertStroke(state))
+        }.apply()
+    }
+
+    fun saveLaunchStatistics(state: String) {
+        val sheared = context.getSharedPreferences(
+            "applicationLaunchStatistics",
+            DaggerAppCompatActivity.MODE_PRIVATE
+        )
+        sheared.edit().apply {
+            putString("date", state)
         }.apply()
     }
 

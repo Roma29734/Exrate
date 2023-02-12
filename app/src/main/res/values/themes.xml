@@ -43,11 +43,18 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+
 <!--    -->
 
 <!--    ImageButton-->
 
     <style name="imageButtonSearch" parent="Widget.AppCompat.ImageButton">
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="android:tint">@color/black</item>
+    </style>
+
+
+    <style name="imageLogo" parent="Widget.AppCompat.ImageButton">
         <item name="backgroundTint">@android:color/transparent</item>
         <item name="android:tint">@color/black</item>
     </style>

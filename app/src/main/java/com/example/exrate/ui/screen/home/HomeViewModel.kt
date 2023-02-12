@@ -1,17 +1,23 @@
 package com.example.exrate.ui.screen.home
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.exrate.data.model.entity.SaveCurrencyEntity
 import com.example.exrate.data.model.latest.LatestModel
 import com.example.exrate.data.repository.ExrateRepository
+import dagger.android.support.DaggerAppCompatActivity
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
     private val repository: ExrateRepository,
-) : ViewModel() {
+    application: Application,
+) : AndroidViewModel(application) {
+
+    private val context = application
 
     private val _homeState = MutableLiveData<StateResult<LatestModel>>()
     val homeState get() = _homeState
@@ -48,6 +54,15 @@ class HomeViewModel @Inject constructor(
         list.map { result += if (it.idPersonal == list.last().idPersonal) it.idPersonal else "${it.idPersonal}," }
         println(result)
         return result
+    }
+
+
+    fun getDateLaunchStatistics(): String? {
+        val sheared = context.getSharedPreferences(
+            "applicationLaunchStatistics",
+            DaggerAppCompatActivity.MODE_PRIVATE
+        )
+        return sheared.getString("date", null)
     }
 }
 

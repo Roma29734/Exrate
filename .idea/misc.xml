@@ -8,12 +8,13 @@
         <entry key="..\:/tehnicals/Exrate/app/src/main/res/drawable/ic_search_white.xml" value="0.1655" />
         <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/activity_main.xml" value="0.33177083333333335" />
         <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/bottom_sheet_detail_currency.xml" value="0.25" />
-        <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/bottom_sheet_search_currency.xml" value="0.22" />
+        <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/bottom_sheet_search_currency.xml" value="0.5" />
         <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/currency_add_row_card.xml" value="0.5" />
         <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/currency_row_card.xml" value="0.25" />
         <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/fragment_add_currency.xml" value="0.25" />
         <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/fragment_search.xml" value="0.33177083333333335" />
+        <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/fragment_start.xml" value="0.33" />
         <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/home_up_bar.xml" value="0.3307291666666667" />
       </map>
     </option>

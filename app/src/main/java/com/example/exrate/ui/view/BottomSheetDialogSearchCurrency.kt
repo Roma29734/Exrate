@@ -49,6 +49,7 @@ class BottomSheetDialogSearchCurrency constructor(
                 }
                 is BottomStateResult.Success -> {
                     binding.apply {
+                        Log.d("bottomSheetDialogSearch","${result.data}")
                         progressBar.isVisible = false
                         textNameCurrency.text = info.s
                         textCurrencyRateC.text = info.c
@@ -75,8 +76,8 @@ class BottomSheetDialogSearchCurrency constructor(
                         }
                         firstTextName.text = result.data[0].name
                         firstTextCountry.text = result.data[0].country
-                        firstTextName.text = result.data[1].name
-                        firstTextCountry.text = result.data[1].country
+                        secondTextName.text = result.data[1].name
+                        secondTextCountry.text = result.data[1].country
                     }
                 }
             }
