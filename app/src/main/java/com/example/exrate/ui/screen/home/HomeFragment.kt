@@ -1,13 +1,11 @@
 package com.example.exrate.ui.screen.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import com.example.exrate.R
 import com.example.exrate.base.BaseFragment
 import com.example.exrate.databinding.FragmentHomeBinding
 import com.example.exrate.ui.adapter.MainAdapter

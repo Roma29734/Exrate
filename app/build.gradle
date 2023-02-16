@@ -105,6 +105,7 @@ dependencies {
     def coilVersion= "2.2.2"
     implementation "io.coil-kt:coil:$coilVersion"
     implementation "io.coil-kt:coil-svg:$coilVersion"
+
 }
 kapt {
     correctErrorTypes = true
