@@ -12,6 +12,8 @@ interface ExrateRepository {
 
     fun getLatest(symbol: String): Single<LatestModel>
 
+    fun getLatestId(id: String): Single<LatestModel>
+
     fun getListSupported(): Single<ListSupportedModel>
 
     fun getProfileCurrency(id: String): Single<ProfileCurrencyModel>

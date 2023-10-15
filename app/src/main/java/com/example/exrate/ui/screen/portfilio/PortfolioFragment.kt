@@ -1,4 +1,4 @@
-package com.example.exrate.ui.screen.home
+package com.example.exrate.ui.screen.portfilio
 
 import android.os.Bundle
 import android.view.View
@@ -7,15 +7,16 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.exrate.base.BaseFragment
-import com.example.exrate.databinding.FragmentHomeBinding
+import com.example.exrate.databinding.FragmentPortfolioBinding
 import com.example.exrate.ui.adapter.MainAdapter
+import com.example.exrate.ui.screen.nav.NavFragmentDirections
 import com.example.exrate.ui.view.BottomSheetDialogDetailCurrency
 
-class HomeFragment :
-    BaseFragment<FragmentHomeBinding>
-        (FragmentHomeBinding::inflate) {
+class PortfolioFragment :
+    BaseFragment<FragmentPortfolioBinding>
+        (FragmentPortfolioBinding::inflate) {
 
-    private val viewModel: HomeViewModel by viewModels { viewModelFactory }
+    private val viewModel: PortfolioViewModel by viewModels { viewModelFactory }
     private val adapter = MainAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,11 +29,11 @@ class HomeFragment :
         binding.apply {
             mainRecyclerView.adapter = adapter
             matButtonEditList.setOnClickListener {
-                val action = HomeFragmentDirections.actionHomeFragmentToAddCurrencyFragment()
+                val action = NavFragmentDirections.actionNavFragmentToAddCurrencyFragment()
                 mainNavController.navigate(action)
             }
             upBar.imgButtonSearch.setOnClickListener {
-                val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
+                val action = NavFragmentDirections.actionNavFragmentToSearchFragment()
                 mainNavController.navigate(action)
             }
         }
@@ -63,11 +64,11 @@ class HomeFragment :
         val launchStatistics = viewModel.getDateLaunchStatistics()
         if(launchStatistics != null) {
             if(launchStatistics != "1") {
-                val action = HomeFragmentDirections.actionHomeFragmentToStartFragment()
+                val action = NavFragmentDirections.actionNavFragmentToStartFragment()
                 view?.let { Navigation.findNavController(it).navigate(action) }
             }
         } else {
-            val action = HomeFragmentDirections.actionHomeFragmentToStartFragment()
+            val action = NavFragmentDirections.actionNavFragmentToStartFragment()
             view?.let { Navigation.findNavController(it).navigate(action) }
         }
     }

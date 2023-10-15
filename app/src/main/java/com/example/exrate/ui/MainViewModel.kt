@@ -1,5 +1,6 @@
 package com.example.exrate.ui
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
@@ -43,6 +44,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    @SuppressLint("CheckResult")
     private fun changeListSupported() {
         repository.getListSupported()
             .subscribeOn(Schedulers.io())
@@ -112,6 +114,7 @@ class MainViewModel @Inject constructor(
         return "${stoke[0]}${stoke[1]}${stoke[2]}${stoke[3]}${stoke[4]}${stoke[5]}${stoke[6]}${stoke[7]}${stoke[8]}${stoke[9]}"
     }
 
+    @SuppressLint("CheckResult")
     fun getProfileCurrency(id: String) {
         repository.getProfileCurrency(id)
             .subscribeOn(Schedulers.io())
@@ -130,6 +133,7 @@ class MainViewModel @Inject constructor(
         _profileCurrencyResult.postValue(BottomStateResult.Loading())
     }
 
+    @SuppressLint("CheckResult")
     fun getProfileCurrencyByName(name: String) {
         _profileCurrencyResultByName.postValue(BottomStateResult.Loading())
         repository.getProfileCurrencyByName(name)

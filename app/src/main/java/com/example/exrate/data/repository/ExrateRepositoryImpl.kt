@@ -24,6 +24,10 @@ class ExrateRepositoryImpl @Inject constructor(
         return apiService.getLatest(id = symbol, access_key = API_KEY)
     }
 
+    override fun getLatestId(id: String): Single<LatestModel> {
+        return apiService.getLatestId(id, access_key = API_KEY)
+    }
+
     override fun getListSupported(): Single<ListSupportedModel> {
         return apiService.getListSupported(type = "forex", access_key = API_KEY)
     }

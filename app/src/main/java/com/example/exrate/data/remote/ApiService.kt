@@ -16,6 +16,13 @@ interface ApiService {
 
     @GET("latest?")
     fun getLatest(
+        @Query("symbol") id: String,
+        @Query("access_key") access_key: String,
+    ): Single<LatestModel>
+
+
+    @GET("latest?")
+    fun getLatestId(
         @Query("id") id: String,
         @Query("access_key") access_key: String,
     ): Single<LatestModel>

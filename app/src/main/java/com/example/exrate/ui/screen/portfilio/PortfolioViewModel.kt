@@ -1,9 +1,10 @@
-package com.example.exrate.ui.screen.home
+package com.example.exrate.ui.screen.portfilio
 
+import android.annotation.SuppressLint
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.exrate.data.model.entity.SaveCurrencyEntity
 import com.example.exrate.data.model.latest.LatestModel
 import com.example.exrate.data.repository.ExrateRepository
@@ -12,7 +13,7 @@ import io.reactivex.rxjava3.kotlin.subscribeBy
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
-class HomeViewModel @Inject constructor(
+class PortfolioViewModel @Inject constructor(
     private val repository: ExrateRepository,
     application: Application,
 ) : AndroidViewModel(application) {
@@ -22,6 +23,7 @@ class HomeViewModel @Inject constructor(
     private val _homeState = MutableLiveData<StateResult<LatestModel>>()
     val homeState get() = _homeState
 
+    @SuppressLint("CheckResult")
     fun getLatest() {
         _homeState.postValue(StateResult.Loading())
         repository.getSizeSaveCurrency()
@@ -30,7 +32,7 @@ class HomeViewModel @Inject constructor(
                 if (size != 0) {
                     repository.readSaveCurrency()
                         .subscribeBy(onSuccess = { saveCurrency ->
-                            repository.getLatest(convertSaveCurrency(saveCurrency))
+                            repository.getLatestId(convertSaveCurrency(saveCurrency))
                                 .subscribeBy(onSuccess = { result ->
                                     if(result.status) {
                                         _homeState.postValue(StateResult.Success(result))

@@ -1,5 +1,6 @@
 package com.example.exrate.ui.screen.search
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,7 +10,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
-
+@SuppressLint("CheckResult")
 class SearchViewModel @Inject constructor(
     private val repository: ExrateRepository
 ): ViewModel() {

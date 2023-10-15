@@ -1,0 +1,19 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+
+    <style name="SplashActivity" parent="Theme.AppCompat.NoActionBar">
+        <!-- Пункт 3-->
+        <item name="android:windowSplashScreenBackground">@color/white</item>
+        <!-- Пункт 2-->
+        <item name="android:windowSplashScreenIconBackgroundColor">
+            @color/white
+        </item>
+
+        <!-- Пункт 1-->
+        <item name="android:windowSplashScreenAnimatedIcon">
+            @drawable/ic_logo_black
+        </item>
+        <!-- Пункт 4-->
+    </style>
+
+</resources>

@@ -7,6 +7,7 @@ plugins {
 }
 
 android {
+    namespace 'com.example.exrate'
     compileSdk 32
 
     defaultConfig {

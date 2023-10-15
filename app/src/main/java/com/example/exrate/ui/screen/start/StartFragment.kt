@@ -19,7 +19,7 @@ class StartFragment :
 
         binding.matButtonNext.setOnClickListener {
             viewModel.saveLaunchStatistics("1")
-            val action = StartFragmentDirections.actionStartFragmentToHomeFragment()
+            val action = StartFragmentDirections.actionStartFragmentToNavFragment()
             mainNavController.navigate(action)
         }
     }

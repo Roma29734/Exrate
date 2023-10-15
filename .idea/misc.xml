@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DesignSurface">
-    <option name="filePathToZoomLevelMap">
-      <map>
-        <entry key="..\:/tehnicals/Exrate/app/src/main/res/drawable/bottom_sheet_background_border.xml" value="0.1655" />
-        <entry key="..\:/tehnicals/Exrate/app/src/main/res/drawable/bottom_sheet_background_border_light.xml" value="0.1655" />
-        <entry key="..\:/tehnicals/Exrate/app/src/main/res/drawable/ic_search_white.xml" value="0.1655" />
-        <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/activity_main.xml" value="0.33177083333333335" />
-        <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/bottom_sheet_detail_currency.xml" value="0.25" />
-        <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/bottom_sheet_search_currency.xml" value="0.5" />
-        <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/currency_add_row_card.xml" value="0.5" />
-        <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/currency_row_card.xml" value="0.5" />
-        <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/fragment_add_currency.xml" value="0.25" />
-        <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/fragment_home.xml" value="0.25" />
-        <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/fragment_search.xml" value="0.33177083333333335" />
-        <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/fragment_start.xml" value="0.33" />
-        <entry key="..\:/tehnicals/Exrate/app/src/main/res/layout/home_up_bar.xml" value="0.3307291666666667" />
-      </map>
-    </option>
-  </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

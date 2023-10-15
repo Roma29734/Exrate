@@ -5,7 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.exrate.di.ViewModelFactory
 import com.example.exrate.ui.MainViewModel
 import com.example.exrate.ui.screen.addCurrency.AddCurrencyViewModel
-import com.example.exrate.ui.screen.home.HomeViewModel
+import com.example.exrate.ui.screen.market.MarketViewModel
+import com.example.exrate.ui.screen.portfilio.PortfolioViewModel
 import com.example.exrate.ui.screen.search.SearchViewModel
 import dagger.Binds
 import dagger.MapKey
@@ -25,8 +26,8 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(HomeViewModel::class)
-    abstract fun bindHomeViewModel(imagesListViewModel: HomeViewModel): ViewModel
+    @ViewModelKey(PortfolioViewModel::class)
+    abstract fun bindPortfolioViewModel(imagesListViewModel: PortfolioViewModel): ViewModel
 
     @Binds
     @IntoMap
@@ -37,6 +38,13 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(SearchViewModel::class)
     abstract fun bindSearchViewModel(imagesListViewModel: SearchViewModel): ViewModel
+
+
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MarketViewModel::class)
+    abstract fun bindMarketViewModel(imagesListViewModel: MarketViewModel): ViewModel
 }
 
 @MustBeDocumented

@@ -72,7 +72,6 @@ class BottomSheetDialogDetailCurrency constructor(
                                     )
                                 })
                             }
-
                             textNameCurrency.text = info.s
                             textCurrencyRateC.text = info.c
                             textCH.text = info.ch
